@@ -1,4 +1,4 @@
-{% from "bind9/map.jinja" import docker with context %}
+{% from "bind9/map.jinja" import zones, hostaliases with context %}
 
 dnsmasq:
   pkg.removed: []
