@@ -27,21 +27,21 @@ bind9:
 
 /etc/bind/named.conf.local:
   file.managed:
-    - source: salt://dns/etc/bind/named.conf.local
+    - source: salt://bind9/etc/bind/named.conf.local
     - template: jinja
     - context:
         zones: {{zones}}
 
 /etc/bind/named.conf.options:
   file.managed:
-    - source: salt://dns/etc/bind/named.conf.options
+    - source: salt://bind9/etc/bind/named.conf.options
     - template: jinja
 
 
 {% for zone in zones %}
 /etc/bind/{{zone}}.db:
   file.managed:
-    - source: salt://dns/etc/bind/dns-zone.tpl
+    - source: salt://bind9/etc/bind/dns-zone.tpl
     - template: jinja
     - context:
         reccords:

@@ -1,6 +1,6 @@
 /etc/resolv.conf:
   file.managed:
-    - source: salt://dns/etc/resolv.conf
+    - source: salt://bind9/etc/resolv.conf
     - template: jinja
 
 
