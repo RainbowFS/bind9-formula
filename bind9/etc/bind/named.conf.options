@@ -1,0 +1,24 @@
+acl goodclients {
+        localhost;
+        any;
+};
+
+options {
+        recursion yes;
+        allow-query { goodclients; };
+
+
+
+
+ forwarders {
+   {% for dns_forwarder in salt["pillar.get"]("bind:config:dns-server:forwarders") %}
+   {{ dns_forwarder }} ;
+   {% endfor %}
+
+        };
+
+        forward only;
+
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+};

@@ -1,0 +1,9 @@
+{% for zone in zones %}
+
+zone "{{zone}}" {
+    type master;
+    file "/etc/bind/{{zone}}.db";
+    notify no;
+};
+
+{% endfor %}
