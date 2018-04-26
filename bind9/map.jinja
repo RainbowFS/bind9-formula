@@ -1,4 +1,4 @@
-{% import_yaml "defaults.yaml" as defaults %}
+{% import_yaml "bind9/defaults.yaml" as defaults %}
 
 {% set hostaliases = salt["pillar.get"]("placement:hostalias") %}
 {% set zones=[] %}
