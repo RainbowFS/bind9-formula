@@ -1,19 +1,6 @@
 dnsmasq:
   pkg.removed: []
 
-{% set hostaliases = salt["pillar.get"]("placement:hostalias") %}
-{% set zones=[] %}
-{% for hostalias in hostaliases %}
-  {% for alias,data in hostalias.items() %}
-    {% set zone=".".join(alias.split(".")[1:]) %}
-    {% if zone not in zones %}
-      {% do zones.append(zone) %}
-    {% endif %}
-  {% endfor %}
-{% endfor %}
-
-
-
 bind9:
   pkg.installed: []
   service.running:
